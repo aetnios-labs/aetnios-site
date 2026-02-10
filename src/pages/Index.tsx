@@ -1,12 +1,31 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navbar from '@/components/Navbar';
+import HeroSection from '@/components/HeroSection';
+import GlitchDivider from '@/components/GlitchDivider';
+import ServicesSection from '@/components/ServicesSection';
+import TechStackSection from '@/components/TechStackSection';
+import AboutSection from '@/components/AboutSection';
+import ProcessSection from '@/components/ProcessSection';
+import ContactSection from '@/components/ContactSection';
+import Footer from '@/components/Footer';
+import MouseFollower from '@/components/MouseFollower';
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="relative min-h-screen bg-background">
+      <MouseFollower />
+      <Navbar />
+      <HeroSection />
+      <GlitchDivider />
+      <ServicesSection />
+      <GlitchDivider />
+      <TechStackSection />
+      <GlitchDivider />
+      <AboutSection />
+      <GlitchDivider />
+      <ProcessSection />
+      <GlitchDivider />
+      <ContactSection />
+      <Footer />
     </div>
   );
 };

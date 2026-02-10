@@ -1,0 +1,112 @@
+import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+
+const WireframeCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    canvas.width = 400;
+    canvas.height = 400;
+    let angle = 0;
+
+    const drawWireframe = () => {
+      ctx.clearRect(0, 0, 400, 400);
+      const cx = 200, cy = 200, r = 120;
+      const points: [number, number, number][] = [];
+
+      // Generate sphere points
+      for (let lat = 0; lat < 12; lat++) {
+        for (let lon = 0; lon < 16; lon++) {
+          const theta = (lat / 11) * Math.PI;
+          const phi = (lon / 15) * Math.PI * 2 + angle;
+          const x = r * Math.sin(theta) * Math.cos(phi);
+          const y = r * Math.cos(theta);
+          const z = r * Math.sin(theta) * Math.sin(phi);
+          points.push([x, y, z]);
+        }
+      }
+
+      // Project and draw
+      ctx.strokeStyle = 'hsl(142 71% 45% / 0.25)';
+      ctx.lineWidth = 0.5;
+
+      for (let lat = 0; lat < 12; lat++) {
+        ctx.beginPath();
+        for (let lon = 0; lon <= 15; lon++) {
+          const idx = lat * 16 + (lon % 16);
+          const [x, y] = points[idx];
+          const px = cx + x;
+          const py = cy + y;
+          if (lon === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.stroke();
+      }
+
+      for (let lon = 0; lon < 16; lon++) {
+        ctx.beginPath();
+        for (let lat = 0; lat < 12; lat++) {
+          const idx = lat * 16 + lon;
+          const [x, y] = points[idx];
+          if (lat === 0) ctx.moveTo(cx + x, cy + y);
+          else ctx.lineTo(cx + x, cy + y);
+        }
+        ctx.stroke();
+      }
+
+      angle += 0.005;
+      requestAnimationFrame(drawWireframe);
+    };
+
+    const raf = requestAnimationFrame(drawWireframe);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return <canvas ref={canvasRef} className="w-full max-w-[400px] h-auto mx-auto" />;
+};
+
+const AboutSection = () => {
+  return (
+    <section id="about" className="relative py-32">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">About Us</p>
+            <h2 className="font-mono text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+              We build what others{' '}
+              <span className="text-gradient-neon">can't imagine</span> yet.
+            </h2>
+            <p className="text-muted-foreground text-base leading-relaxed mb-6 font-body">
+              Aetnios is a collective of senior engineers, architects, and strategists who thrive at the intersection of emerging technology and real-world impact. We don't just ship code — we engineer systems that redefine what's possible.
+            </p>
+            <p className="text-muted-foreground text-base leading-relaxed font-body">
+              From pre-seed startups to enterprise transformations, we bring deep technical expertise with the strategic thinking to match. Every engagement is treated as a partnership, not a transaction.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="flex justify-center"
+          >
+            <WireframeCanvas />
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutSection;
