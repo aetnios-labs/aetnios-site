@@ -9,26 +9,22 @@ const HeroSection = () => {
       <div className="scanline-overlay absolute inset-0 z-[1]" />
 
       <div className="relative z-10 text-center px-6 max-w-4xl">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-6"
-        >
-          Technology Consultancy
-        </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-mono text-4xl sm:text-5xl md:text-7xl font-extrabold leading-tight mb-6"
+          transition={{ duration: 0.8 }}
+          className="font-mono text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none mb-4 text-gradient-neon tracking-tight"
         >
-          <span className="text-gradient-neon">Engineering</span>{' '}
-          <span className="text-foreground">the</span>
-          <br />
-          <span className="text-foreground">Future of </span>
-          <span className="text-gradient-neon-reverse">Digital</span>
+          AETNIOS
         </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="font-mono text-xl sm:text-2xl md:text-3xl font-medium text-foreground/80 mb-6 tracking-wide"
+        >
+          Engineering the Future of Digital
+        </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
