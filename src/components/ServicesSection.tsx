@@ -74,13 +74,13 @@ const ServicesSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="flex flex-wrap justify-center gap-6"
         >
           {services.map((service) => (
             <motion.div
               key={service.title}
               variants={cardVariants}
-              className="spinning-gradient-border glass-card glass-card-hover rounded-xl p-8 group cursor-default transition-all duration-300"
+              className="spinning-gradient-border glass-card glass-card-hover rounded-xl p-8 group cursor-default transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] min-w-[320px]"
             >
               <service.icon className="w-10 h-10 text-neon-green mb-5 group-hover:drop-shadow-[0_0_12px_hsl(142_71%_45%/0.6)] transition-all duration-300" />
               <h3 className="font-mono text-lg font-bold text-foreground mb-3">{service.title}</h3>
