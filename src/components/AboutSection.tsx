@@ -16,14 +16,17 @@ const WireframeCanvas = () => {
 
     const drawWireframe = () => {
       ctx.clearRect(0, 0, 400, 400);
-      const cx = 200, cy = 200, r = 120;
+      const cx = 200, cy = 200, r = 130;
+
+      // Generate sphere points with more divisions
+      const latCount = 20;
+      const lonCount = 28;
       const points: [number, number, number][] = [];
 
-      // Generate sphere points
-      for (let lat = 0; lat < 12; lat++) {
-        for (let lon = 0; lon < 16; lon++) {
-          const theta = (lat / 11) * Math.PI;
-          const phi = (lon / 15) * Math.PI * 2 + angle;
+      for (let lat = 0; lat < latCount; lat++) {
+        for (let lon = 0; lon < lonCount; lon++) {
+          const theta = (lat / (latCount - 1)) * Math.PI;
+          const phi = (lon / (lonCount - 1)) * Math.PI * 2 + angle;
           const x = r * Math.sin(theta) * Math.cos(phi);
           const y = r * Math.cos(theta);
           const z = r * Math.sin(theta) * Math.sin(phi);
@@ -31,29 +34,31 @@ const WireframeCanvas = () => {
         }
       }
 
-      // Project and draw
-      ctx.strokeStyle = 'hsl(142 71% 45% / 0.6)';
-      ctx.lineWidth = 0.8;
-      ctx.shadowColor = 'hsl(142 71% 45% / 0.4)';
-      ctx.shadowBlur = 6;
+      ctx.shadowColor = 'hsl(142 71% 45% / 0.35)';
+      ctx.shadowBlur = 5;
 
-      for (let lat = 0; lat < 12; lat++) {
+      // Draw latitude lines
+      for (let lat = 0; lat < latCount; lat++) {
+        const depth = Math.abs(lat - latCount / 2) / (latCount / 2);
+        ctx.strokeStyle = `hsl(142 71% 45% / ${0.15 + depth * 0.45})`;
+        ctx.lineWidth = 0.5 + depth * 0.4;
         ctx.beginPath();
-        for (let lon = 0; lon <= 15; lon++) {
-          const idx = lat * 16 + (lon % 16);
+        for (let lon = 0; lon < lonCount; lon++) {
+          const idx = lat * lonCount + lon;
           const [x, y] = points[idx];
-          const px = cx + x;
-          const py = cy + y;
-          if (lon === 0) ctx.moveTo(px, py);
-          else ctx.lineTo(px, py);
+          if (lon === 0) ctx.moveTo(cx + x, cy + y);
+          else ctx.lineTo(cx + x, cy + y);
         }
         ctx.stroke();
       }
 
-      for (let lon = 0; lon < 16; lon++) {
+      // Draw longitude lines
+      for (let lon = 0; lon < lonCount; lon++) {
+        ctx.strokeStyle = 'hsl(142 71% 45% / 0.35)';
+        ctx.lineWidth = 0.5;
         ctx.beginPath();
-        for (let lat = 0; lat < 12; lat++) {
-          const idx = lat * 16 + lon;
+        for (let lat = 0; lat < latCount; lat++) {
+          const idx = lat * lonCount + lon;
           const [x, y] = points[idx];
           if (lat === 0) ctx.moveTo(cx + x, cy + y);
           else ctx.lineTo(cx + x, cy + y);
@@ -61,7 +66,40 @@ const WireframeCanvas = () => {
         ctx.stroke();
       }
 
-      angle += 0.005;
+      // Draw diagonal cross-hatch lines for extra intricacy
+      ctx.strokeStyle = 'hsl(271 91% 65% / 0.15)';
+      ctx.lineWidth = 0.3;
+      ctx.shadowColor = 'hsl(271 91% 65% / 0.2)';
+      ctx.shadowBlur = 4;
+      for (let i = 0; i < latCount - 1; i += 2) {
+        ctx.beginPath();
+        for (let j = 0; j < lonCount - 1; j++) {
+          const idx1 = i * lonCount + j;
+          const idx2 = (i + 1) * lonCount + ((j + 1) % lonCount);
+          const [x1, y1] = points[idx1];
+          const [x2, y2] = points[idx2];
+          ctx.moveTo(cx + x1, cy + y1);
+          ctx.lineTo(cx + x2, cy + y2);
+        }
+        ctx.stroke();
+      }
+
+      // Accent dots at intersections
+      ctx.shadowColor = 'hsl(142 71% 45% / 0.5)';
+      ctx.shadowBlur = 3;
+      for (let lat = 0; lat < latCount; lat += 3) {
+        for (let lon = 0; lon < lonCount; lon += 4) {
+          const idx = lat * lonCount + lon;
+          const [x, y, z] = points[idx];
+          const brightness = (z + r) / (2 * r);
+          ctx.fillStyle = `hsl(142 71% 45% / ${0.2 + brightness * 0.6})`;
+          ctx.beginPath();
+          ctx.arc(cx + x, cy + y, 1 + brightness * 1.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      angle += 0.004;
       requestAnimationFrame(drawWireframe);
     };
 
