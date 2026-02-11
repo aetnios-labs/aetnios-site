@@ -27,8 +27,8 @@ const ContactSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">Get In Touch</p>
-          <h2 className="font-mono text-3xl md:text-5xl font-bold text-gradient-neon">
+          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">Get In Touch</p>
+          <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
             Let's Build Together
           </h2>
         </motion.div>
