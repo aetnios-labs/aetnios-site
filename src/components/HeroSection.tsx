@@ -13,15 +13,23 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-mono text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none mb-4 text-gradient-neon tracking-tight"
+          className="font-mono text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none mb-6 text-foreground tracking-tighter"
+          style={{ textShadow: '0 0 40px hsl(142 71% 45% / 0.15), 0 0 80px hsl(271 91% 65% / 0.1)' }}
         >
           AETNIOS
         </motion.h1>
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          animate={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="w-24 h-[2px] mx-auto mb-6"
+          style={{ background: 'var(--gradient-neon)' }}
+        />
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-mono text-xl sm:text-2xl md:text-3xl font-medium text-foreground/80 mb-6 tracking-wide"
+          className="font-mono text-xl sm:text-2xl md:text-3xl font-light text-foreground/70 mb-6 tracking-widest uppercase"
         >
           Engineering the Future of Digital
         </motion.p>
@@ -37,12 +45,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-5 justify-center"
         >
-          <a href="#services" className="btn-neon-green">
+          <a href="#services" className="btn-neon-filled text-base px-10 py-4 text-lg font-bold tracking-widest">
             See Our Work
           </a>
-          <a href="#contact" className="btn-neon-purple">
+          <a href="#contact" className="btn-neon-green text-base px-10 py-4 text-lg font-bold tracking-widest">
             Contact Us
           </a>
         </motion.div>
