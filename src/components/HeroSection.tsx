@@ -13,7 +13,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-mono text-7xl sm:text-8xl md:text-9xl font-extrabold leading-none mb-6 text-foreground tracking-tighter"
+          className="font-mono text-8xl sm:text-9xl md:text-[12rem] lg:text-[14rem] font-extrabold leading-[0.85] mb-6 text-foreground tracking-tighter"
           style={{ textShadow: '0 0 40px hsl(142 71% 45% / 0.15), 0 0 80px hsl(271 91% 65% / 0.1)' }}
         >
           AETNIOS
