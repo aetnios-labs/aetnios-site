@@ -68,8 +68,8 @@ const ParticleNetwork = () => {
           p.vy += (dy / dist) * force;
         }
 
-        p.vx *= 0.98;
-        p.vy *= 0.98;
+        p.vx *= 0.995;
+        p.vy *= 0.995;
         p.x += p.vx;
         p.y += p.vy;
 
