@@ -20,7 +20,7 @@ const ProcessSection = () => {
           className="text-center mb-20"
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">How We Work</p>
-          <h2 className="font-mono text-3xl md:text-5xl font-bold text-gradient-neon-reverse">
+          <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
             Our Process
           </h2>
         </motion.div>
@@ -47,11 +47,11 @@ const ProcessSection = () => {
               <div className={`ml-14 md:ml-0 md:w-[45%] ${idx % 2 === 0 ? 'md:pr-16' : 'md:pl-16'} ${idx % 2 === 0 ? '' : 'md:ml-auto'}`}>
                 <div className="glass-card rounded-xl p-6 group hover:border-neon-green/30 transition-all duration-300">
                   <phase.icon className="w-8 h-8 text-neon-purple mb-4 group-hover:drop-shadow-[0_0_10px_hsl(271_91%_65%/0.5)] transition-all duration-300" />
-                  <h3 className="font-mono text-lg font-bold text-foreground mb-2">
+                  <h3 className="font-mono text-xl font-bold text-foreground mb-2">
                     <span className="text-neon-green mr-2">0{idx + 1}.</span>
                     {phase.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm font-body leading-relaxed">{phase.description}</p>
+                  <p className="text-muted-foreground text-base font-body leading-relaxed">{phase.description}</p>
                 </div>
               </div>
             </motion.div>

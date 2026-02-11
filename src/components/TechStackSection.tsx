@@ -32,7 +32,7 @@ const TechStackSection = () => {
             {doubled.map((tech, i) => (
               <span
                 key={i}
-                className="mx-6 font-mono text-lg md:text-xl font-semibold text-muted-foreground hover:text-neon-green transition-colors duration-300 cursor-default select-none"
+                className="mx-6 font-mono text-xl md:text-2xl font-bold text-muted-foreground hover:text-neon-green transition-colors duration-300 cursor-default select-none"
               >
                 {tech}
               </span>

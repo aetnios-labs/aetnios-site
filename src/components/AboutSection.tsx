@@ -82,14 +82,14 @@ const AboutSection = () => {
             transition={{ duration: 0.7 }}
           >
             <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">About Us</p>
-            <h2 className="font-mono text-3xl md:text-4xl font-bold text-foreground mb-6 leading-tight">
+            <h2 className="font-mono text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
               We build what others{' '}
-              <span className="text-gradient-neon">can't imagine</span> yet.
+              <span className="text-neon-green">can't imagine</span> yet.
             </h2>
-            <p className="text-muted-foreground text-base leading-relaxed mb-6 font-body">
+            <p className="text-muted-foreground text-lg leading-relaxed mb-6 font-body">
               Aetnios is a collective of senior engineers, architects, and strategists who thrive at the intersection of emerging technology and real-world impact. We don't just ship code — we engineer systems that redefine what's possible.
             </p>
-            <p className="text-muted-foreground text-base leading-relaxed font-body">
+            <p className="text-muted-foreground text-lg leading-relaxed font-body">
               From pre-seed startups to enterprise transformations, we bring deep technical expertise with the strategic thinking to match. Every engagement is treated as a partnership, not a transaction.
             </p>
           </motion.div>

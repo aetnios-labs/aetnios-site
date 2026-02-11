@@ -37,7 +37,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 font-body"
+          className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto mb-10 font-body"
         >
           Full-stack engineering, blockchain, AI/ML, and data analytics — built for the teams shaping tomorrow.
         </motion.p>

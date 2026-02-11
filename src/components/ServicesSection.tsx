@@ -63,8 +63,8 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">What We Do</p>
-          <h2 className="font-mono text-3xl md:text-5xl font-bold text-gradient-neon">
+          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">What We Do</p>
+          <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
             Our Services
           </h2>
         </motion.div>
@@ -83,8 +83,8 @@ const ServicesSection = () => {
               className="spinning-gradient-border glass-card glass-card-hover rounded-xl p-8 group cursor-default transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] min-w-[320px]"
             >
               <service.icon className="w-10 h-10 text-neon-green mb-5 group-hover:drop-shadow-[0_0_12px_hsl(142_71%_45%/0.6)] transition-all duration-300" />
-              <h3 className="font-mono text-lg font-bold text-foreground mb-3">{service.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed font-body">{service.description}</p>
+              <h3 className="font-mono text-xl font-bold text-foreground mb-3">{service.title}</h3>
+              <p className="text-muted-foreground text-base leading-relaxed font-body">{service.description}</p>
             </motion.div>
           ))}
         </motion.div>
