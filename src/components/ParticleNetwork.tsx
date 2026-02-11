@@ -37,8 +37,8 @@ const ParticleNetwork = () => {
     particlesRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * w(),
       y: Math.random() * h(),
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
+      vx: (Math.random() - 0.5) * 1.2,
+      vy: (Math.random() - 0.5) * 1.2,
       size: Math.random() * 2 + 1,
       color: colors[Math.floor(Math.random() * colors.length)],
     }));
