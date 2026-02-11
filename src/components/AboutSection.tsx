@@ -32,8 +32,10 @@ const WireframeCanvas = () => {
       }
 
       // Project and draw
-      ctx.strokeStyle = 'hsl(142 71% 45% / 0.25)';
-      ctx.lineWidth = 0.5;
+      ctx.strokeStyle = 'hsl(142 71% 45% / 0.6)';
+      ctx.lineWidth = 0.8;
+      ctx.shadowColor = 'hsl(142 71% 45% / 0.4)';
+      ctx.shadowBlur = 6;
 
       for (let lat = 0; lat < 12; lat++) {
         ctx.beginPath();
