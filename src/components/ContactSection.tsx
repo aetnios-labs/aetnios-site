@@ -1,23 +1,49 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import { Send } from 'lucide-react';
-import MatrixRain from './MatrixRain';
+
+const MatrixRain = lazy(() => import('./MatrixRain'));
+
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY || '';
 
 const ContactSection = () => {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailto = `mailto:ian@aetnios.com?subject=Inquiry from ${encodeURIComponent(form.name)}${form.company ? ` at ${encodeURIComponent(form.company)}` : ''}&body=${encodeURIComponent(form.message)}%0A%0AFrom: ${encodeURIComponent(form.name)}%0AEmail: ${encodeURIComponent(form.email)}`;
-    window.location.href = mailto;
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
+    setStatus('sending');
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New inquiry from ${form.name}${form.company ? ` at ${form.company}` : ''}`,
+          from_name: form.name,
+          email: form.email,
+          company: form.company,
+          message: form.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Submit failed');
+
+      setStatus('sent');
+      setForm({ name: '', email: '', company: '', message: '' });
+      setTimeout(() => setStatus('idle'), 4000);
+    } catch {
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 4000);
+    }
   };
 
   return (
     <section id="contact" className="relative py-32 overflow-hidden">
-      <MatrixRain />
+      <Suspense fallback={null}>
+        <MatrixRain />
+      </Suspense>
 
       <div className="relative z-10 max-w-2xl mx-auto px-6">
         <motion.div
@@ -29,7 +55,7 @@ const ContactSection = () => {
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">Get In Touch</p>
           <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
-            Let's Build Together
+            Let's Build Something
           </h2>
         </motion.div>
 
@@ -92,9 +118,13 @@ const ContactSection = () => {
           </div>
           <button
             type="submit"
-            className="btn-neon-filled w-full flex items-center justify-center gap-2"
+            disabled={status === 'sending'}
+            className="btn-neon-filled w-full flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
           >
-            {submitted ? 'Opening Mail Client...' : 'Send Message'}
+            {status === 'sending' && 'Sending...'}
+            {status === 'sent' && 'Message Sent!'}
+            {status === 'error' && 'Failed — Try Again'}
+            {status === 'idle' && 'Send Message'}
             <Send size={16} />
           </button>
         </motion.form>

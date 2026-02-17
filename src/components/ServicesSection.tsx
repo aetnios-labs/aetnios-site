@@ -63,9 +63,9 @@ const ServicesSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">What We Do</p>
+          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">What I Do</p>
           <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
-            Our Services
+            Services
           </h2>
         </motion.div>
 

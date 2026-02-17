@@ -31,7 +31,10 @@ const ParticleNetwork = () => {
 
     const w = () => canvas.offsetWidth;
     const h = () => canvas.offsetHeight;
-    const count = Math.min(120, Math.floor((w() * h()) / 8000));
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile
+      ? Math.min(40, Math.floor((w() * h()) / 15000))
+      : Math.min(100, Math.floor((w() * h()) / 10000));
     const colors = ['#22C55E', '#A855F7', '#22C55E', '#34D399', '#C084FC'];
 
     particlesRef.current = Array.from({ length: count }, () => ({
@@ -39,7 +42,7 @@ const ParticleNetwork = () => {
       y: Math.random() * h(),
       vx: (Math.random() - 0.5) * 1.2,
       vy: (Math.random() - 0.5) * 1.2,
-      size: Math.random() * 2 + 1,
+      size: Math.random() * 2.2 + 1.1,
       color: colors[Math.floor(Math.random() * colors.length)],
     }));
 
@@ -68,8 +71,17 @@ const ParticleNetwork = () => {
           p.vy += (dy / dist) * force;
         }
 
-        p.vx *= 0.995;
-        p.vy *= 0.995;
+        p.vx *= 0.9985;
+        p.vy *= 0.9985;
+
+        // Maintain minimum ambient drift
+        const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
+        const minSpeed = 0.3;
+        if (speed < minSpeed && speed > 0) {
+          p.vx = (p.vx / speed) * minSpeed;
+          p.vy = (p.vy / speed) * minSpeed;
+        }
+
         p.x += p.vx;
         p.y += p.vy;
 
@@ -85,13 +97,14 @@ const ParticleNetwork = () => {
       }
 
       // Draw connections
+      const connectionDist = isMobile ? 100 : 140;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 140) {
-            const alpha = (1 - dist / 140) * 0.3;
+          if (dist < connectionDist) {
+            const alpha = (1 - dist / connectionDist) * 0.36;
             const gradient = ctx.createLinearGradient(
               particles[i].x, particles[i].y,
               particles[j].x, particles[j].y

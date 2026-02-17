@@ -11,18 +11,26 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background">
+      <a
+        href="#services"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] btn-neon-green focus:inline-block"
+      >
+        Skip to content
+      </a>
       <Navbar />
-      <HeroSection />
-      <GlitchDivider />
-      <ServicesSection />
-      <GlitchDivider />
-      <TechStackSection />
-      <GlitchDivider />
-      <AboutSection />
-      <GlitchDivider />
-      <ProcessSection />
-      <GlitchDivider />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <GlitchDivider />
+        <ServicesSection />
+        <GlitchDivider />
+        <TechStackSection />
+        <GlitchDivider />
+        <AboutSection />
+        <GlitchDivider />
+        <ProcessSection />
+        <GlitchDivider />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

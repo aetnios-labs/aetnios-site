@@ -2,9 +2,9 @@ import { motion } from 'framer-motion';
 import { Search, Lightbulb, Code, Rocket } from 'lucide-react';
 
 const phases = [
-  { icon: Search, title: 'Discovery', description: 'Deep-dive into your domain, constraints, and goals to define the right problem.' },
-  { icon: Lightbulb, title: 'Architecture', description: 'Design scalable, future-proof system architecture and choose the right tools.' },
-  { icon: Code, title: 'Build & Iterate', description: 'Rapid development cycles with continuous feedback, testing, and refinement.' },
+  { icon: Search, title: 'Discovery', description: 'I dig into your domain, constraints, and goals to make sure we\'re solving the right problem.' },
+  { icon: Lightbulb, title: 'Architecture', description: 'Design a scalable, future-proof system architecture with the right tools for the job.' },
+  { icon: Code, title: 'Build & Iterate', description: 'Rapid development cycles with continuous feedback loops, testing, and refinement.' },
   { icon: Rocket, title: 'Deploy & Scale', description: 'Production-grade deployment, monitoring, optimization, and ongoing support.' },
 ];
 
@@ -19,9 +19,9 @@ const ProcessSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">How We Work</p>
+          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">How I Work</p>
           <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
-            Our Process
+            Process
           </h2>
         </motion.div>
 

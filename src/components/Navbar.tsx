@@ -13,7 +13,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border">
+    <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 z-50 glass-card border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" className="font-mono text-xl font-bold tracking-tight">
           <span className="text-gradient-neon">Aetnios</span>

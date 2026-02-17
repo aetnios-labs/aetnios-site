@@ -39,7 +39,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto mb-10 font-body"
         >
-          Full-stack engineering, blockchain, AI/ML, and data analytics — built for the teams shaping tomorrow.
+          Full-stack engineering, blockchain, AI/ML, and data analytics — shipping fast, building to last.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,10 +48,10 @@ const HeroSection = () => {
           className="flex flex-col sm:flex-row gap-5 justify-center"
         >
           <a href="#services" className="btn-neon-filled text-base px-10 py-4 text-lg font-bold tracking-widest">
-            See Our Work
+            What I Build
           </a>
           <a href="#contact" className="btn-neon-green text-base px-10 py-4 text-lg font-bold tracking-widest">
-            Contact Us
+            Get In Touch
           </a>
         </motion.div>
       </div>

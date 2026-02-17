@@ -123,14 +123,14 @@ const AboutSection = () => {
           >
             <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">About Us</p>
             <h2 className="font-mono text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
-              We build what others{' '}
-              <span className="text-neon-green">can't imagine</span> yet.
+              Building what's{' '}
+              <span className="text-neon-green">next</span> — right now.
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-6 font-body">
-              Aetnios is a collective of senior engineers, architects, and strategists who thrive at the intersection of emerging technology and real-world impact. We don't just ship code — we engineer systems that redefine what's possible.
+              Aetnios is a software studio built for speed and substance. I work directly with founders, startups, and teams who need senior-level engineering without the overhead of an agency. No layers, no hand-offs — just clean architecture and shipped products.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed font-body">
-              From pre-seed startups to enterprise transformations, we bring deep technical expertise with the strategic thinking to match. Every engagement is treated as a partnership, not a transaction.
+              Whether you're launching an MVP, scaling infrastructure, or exploring emerging tech like blockchain and AI — I bring the technical depth to get it done right and the pragmatism to get it done fast.
             </p>
           </motion.div>
 
