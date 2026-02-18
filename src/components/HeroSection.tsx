@@ -13,7 +13,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="font-mono text-8xl sm:text-9xl md:text-[12rem] lg:text-[14rem] font-extrabold leading-[0.85] mb-6 text-foreground tracking-tighter"
+          className="font-mono text-5xl sm:text-7xl md:text-[12rem] lg:text-[14rem] font-extrabold leading-[0.85] mb-6 text-foreground tracking-tighter"
           style={{ textShadow: '0 0 40px hsl(142 71% 45% / 0.15), 0 0 80px hsl(271 91% 65% / 0.1)' }}
         >
           AETNIOS
@@ -29,7 +29,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="font-mono text-xl sm:text-2xl md:text-3xl font-light text-foreground/70 mb-6 tracking-widest uppercase"
+          className="font-mono text-base sm:text-2xl md:text-3xl font-light text-foreground/70 mb-6 tracking-widest uppercase"
         >
           Engineering the Future of Digital
         </motion.p>
@@ -37,7 +37,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-muted-foreground text-xl md:text-2xl max-w-2xl mx-auto mb-10 font-body"
+          className="text-muted-foreground text-base md:text-2xl max-w-2xl mx-auto mb-10 font-body"
         >
           Full-stack engineering, blockchain, AI/ML, and data analytics — shipping fast, building to last.
         </motion.p>
@@ -47,10 +47,10 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
           className="flex flex-col sm:flex-row gap-5 justify-center"
         >
-          <a href="#services" className="btn-neon-filled text-base px-10 py-4 text-lg font-bold tracking-widest">
+          <a href="#services" className="btn-neon-filled px-6 py-3 text-sm sm:px-10 sm:py-4 sm:text-lg font-bold tracking-widest">
             What I Build
           </a>
-          <a href="#contact" className="btn-neon-green text-base px-10 py-4 text-lg font-bold tracking-widest">
+          <a href="#contact" className="btn-neon-green px-6 py-3 text-sm sm:px-10 sm:py-4 sm:text-lg font-bold tracking-widest">
             Get In Touch
           </a>
         </motion.div>

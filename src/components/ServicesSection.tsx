@@ -41,7 +41,7 @@ const cardVariants = {
 
 const ServicesSection = () => {
   return (
-    <section id="services" className="relative py-32 overflow-hidden">
+    <section id="services" className="relative py-16 md:py-32 overflow-hidden">
       {/* Animated grid background */}
       <div
         className="absolute inset-0 opacity-[0.04]"
@@ -64,7 +64,7 @@ const ServicesSection = () => {
           className="text-center mb-16"
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">What I Do</p>
-          <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
+          <h2 className="font-mono text-3xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
             Services
           </h2>
         </motion.div>
@@ -80,7 +80,7 @@ const ServicesSection = () => {
             <motion.div
               key={service.title}
               variants={cardVariants}
-              className="spinning-gradient-border glass-card glass-card-hover rounded-xl p-8 group cursor-default transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] min-w-[320px]"
+              className="spinning-gradient-border glass-card glass-card-hover rounded-xl p-6 md:p-8 group cursor-default transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
             >
               <service.icon className="w-10 h-10 text-neon-green mb-5 group-hover:drop-shadow-[0_0_12px_hsl(142_71%_45%/0.6)] transition-all duration-300" />
               <h3 className="font-mono text-xl font-bold text-foreground mb-3">{service.title}</h3>

@@ -40,7 +40,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
+    <section id="contact" className="relative py-16 md:py-32 overflow-hidden">
       <Suspense fallback={null}>
         <MatrixRain />
       </Suspense>
@@ -54,7 +54,7 @@ const ContactSection = () => {
           className="text-center mb-12"
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">Get In Touch</p>
-          <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
+          <h2 className="font-mono text-3xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
             Let's Build Something
           </h2>
         </motion.div>
@@ -65,7 +65,7 @@ const ContactSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.2 }}
           onSubmit={handleSubmit}
-          className="glass-card rounded-2xl p-8 md:p-10 space-y-6"
+          className="glass-card rounded-2xl p-5 md:p-10 space-y-5 md:space-y-6"
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>

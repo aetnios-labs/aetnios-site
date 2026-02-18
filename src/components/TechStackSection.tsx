@@ -8,7 +8,7 @@ const TechStackSection = () => {
   const doubled = [...techs, ...techs];
 
   return (
-    <section id="tech" className="relative py-20 overflow-hidden">
+    <section id="tech" className="relative py-12 md:py-20 overflow-hidden">
       {/* Circuit board pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -28,11 +28,11 @@ const TechStackSection = () => {
         </p>
 
         <div className="relative">
-          <div className="flex animate-marquee whitespace-nowrap">
+          <div className="flex animate-marquee-mobile md:animate-marquee whitespace-nowrap">
             {doubled.map((tech, i) => (
               <span
                 key={i}
-                className="mx-6 font-mono text-xl md:text-2xl font-bold text-muted-foreground hover:text-neon-green transition-colors duration-300 cursor-default select-none"
+                className="mx-4 md:mx-6 font-mono text-base md:text-2xl font-bold text-muted-foreground hover:text-neon-green transition-colors duration-300 cursor-default select-none"
               >
                 {tech}
               </span>

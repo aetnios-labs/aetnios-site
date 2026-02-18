@@ -107,14 +107,14 @@ const WireframeCanvas = () => {
     return () => cancelAnimationFrame(raf);
   }, []);
 
-  return <canvas ref={canvasRef} className="w-full max-w-[400px] h-auto mx-auto" />;
+  return <canvas ref={canvasRef} className="w-full max-w-[280px] md:max-w-[400px] h-auto mx-auto" />;
 };
 
 const AboutSection = () => {
   return (
-    <section id="about" className="relative py-32">
+    <section id="about" className="relative py-16 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -122,14 +122,14 @@ const AboutSection = () => {
             transition={{ duration: 0.7 }}
           >
             <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">About Us</p>
-            <h2 className="font-mono text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
+            <h2 className="font-mono text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
               Building what's{' '}
               <span className="text-neon-green">next</span> — right now.
             </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed mb-6 font-body">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6 font-body">
               Aetnios is a software studio built for speed and substance. I work directly with founders, startups, and teams who need senior-level engineering without the overhead of an agency. No layers, no hand-offs — just clean architecture and shipped products.
             </p>
-            <p className="text-muted-foreground text-lg leading-relaxed font-body">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-body">
               Whether you're launching an MVP, scaling infrastructure, or exploring emerging tech like blockchain and AI — I bring the technical depth to get it done right and the pragmatism to get it done fast.
             </p>
           </motion.div>

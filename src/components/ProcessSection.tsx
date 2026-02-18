@@ -10,17 +10,17 @@ const phases = [
 
 const ProcessSection = () => {
   return (
-    <section id="process" className="relative py-32">
+    <section id="process" className="relative py-16 md:py-32">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12 md:mb-20"
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">How I Work</p>
-          <h2 className="font-mono text-4xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
+          <h2 className="font-mono text-3xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
             Process
           </h2>
         </motion.div>
@@ -36,7 +36,7 @@ const ProcessSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className={`relative flex items-start mb-16 last:mb-0 ${
+              className={`relative flex items-start mb-10 md:mb-16 last:mb-0 ${
                 idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               } flex-row`}
             >
