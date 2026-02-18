@@ -30,35 +30,21 @@ const TechStackSection = () => {
           Tech Stack
         </p>
 
-        {isMobile ? (
-          <div className="relative">
-            <div className="tech-scroll-fade overflow-x-auto scrollbar-hide px-6">
-              <div className="flex gap-5 w-max py-2">
-                {techs.map((tech) => (
-                  <span
-                    key={tech}
-                    className="shrink-0 font-mono text-sm font-bold text-muted-foreground border border-border rounded-full px-4 py-2 select-none"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+        <div className="relative">
+          <div
+            className="flex whitespace-nowrap"
+            style={{ animation: `marquee ${isMobile ? 14 : 30}s linear infinite` }}
+          >
+            {doubled.map((tech, i) => (
+              <span
+                key={i}
+                className="mx-4 md:mx-6 font-mono text-base md:text-2xl font-bold text-muted-foreground hover:text-neon-green transition-colors duration-300 cursor-default select-none"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
-        ) : (
-          <div className="relative">
-            <div className="flex animate-marquee whitespace-nowrap">
-              {doubled.map((tech, i) => (
-                <span
-                  key={i}
-                  className="mx-6 font-mono text-2xl font-bold text-muted-foreground hover:text-neon-green transition-colors duration-300 cursor-default select-none"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );
