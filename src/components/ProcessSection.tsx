@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Search, Lightbulb, Code, Rocket } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const phases = [
   { icon: Search, title: 'Discovery', description: 'I dig into your domain, constraints, and goals to make sure we\'re solving the right problem.' },
@@ -9,14 +10,17 @@ const phases = [
 ];
 
 const ProcessSection = () => {
+  const isMobile = useIsMobile();
+  const ease = [0.25, 0.1, 0.25, 1] as const;
+
   return (
     <section id="process" className="relative py-16 md:py-32">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 12 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: isMobile ? 0.4 : 0.6, ease }}
           className="text-center mb-12 md:mb-20"
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">How I Work</p>
@@ -32,10 +36,10 @@ const ProcessSection = () => {
           {phases.map((phase, idx) => (
             <motion.div
               key={phase.title}
-              initial={{ opacity: 0, x: idx % 2 === 0 ? -40 : 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: idx * 0.15 }}
+              initial={{ opacity: 0, ...(isMobile ? { y: 16 } : { x: idx % 2 === 0 ? -40 : 40 }) }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, margin: isMobile ? '-30px' : '-80px' }}
+              transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? idx * 0.06 : idx * 0.15, ease }}
               className={`relative flex items-start mb-10 md:mb-16 last:mb-0 ${
                 idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               } flex-row`}

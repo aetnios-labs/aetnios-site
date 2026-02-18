@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Code2, Blocks, Brain, BarChart3, Workflow } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const services = [
   {
@@ -29,17 +30,24 @@ const services = [
   },
 ];
 
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
-};
-
 const ServicesSection = () => {
+  const isMobile = useIsMobile();
+
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: isMobile ? 0.06 : 0.12 } },
+  };
+
+  const cardVariants = isMobile
+    ? {
+        hidden: { opacity: 0, y: 16 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
+      }
+    : {
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
+      };
+
   return (
     <section id="services" className="relative py-16 md:py-32 overflow-hidden">
       {/* Animated grid background */}
@@ -57,10 +65,10 @@ const ServicesSection = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: isMobile ? 12 : 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: isMobile ? '-40px' : '-100px' }}
+          transition={{ duration: isMobile ? 0.4 : 0.6, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-center mb-16"
         >
           <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">What I Do</p>
@@ -73,7 +81,7 @@ const ServicesSection = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: true, margin: isMobile ? '-20px' : '-50px' }}
           className="flex flex-wrap justify-center gap-6"
         >
           {services.map((service) => (

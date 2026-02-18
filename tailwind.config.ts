@@ -88,10 +88,6 @@ export default {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
         },
-        "marquee-mobile": {
-          "0%": { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
         "blink": {
           "0%, 100%": { opacity: "1" },
           "50%": { opacity: "0" },
@@ -102,7 +98,6 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-in": "fade-in 0.6s ease-out forwards",
         "marquee": "marquee 30s linear infinite",
-        "marquee-mobile": "marquee-mobile 12s linear infinite",
         "blink": "blink 1s step-end infinite",
       },
     },

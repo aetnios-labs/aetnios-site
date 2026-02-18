@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const WireframeCanvas = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -111,15 +112,18 @@ const WireframeCanvas = () => {
 };
 
 const AboutSection = () => {
+  const isMobile = useIsMobile();
+  const ease = [0.25, 0.1, 0.25, 1] as const;
+
   return (
     <section id="about" className="relative py-16 md:py-32">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? 16 : 0 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: isMobile ? 0.4 : 0.7, ease }}
           >
             <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">About Us</p>
             <h2 className="font-mono text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
@@ -135,10 +139,10 @@ const AboutSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: isMobile ? 0 : 40, y: isMobile ? 16 : 0 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
+            transition={{ duration: isMobile ? 0.4 : 0.7, delay: isMobile ? 0.1 : 0.2, ease }}
             className="flex justify-center"
           >
             <WireframeCanvas />
