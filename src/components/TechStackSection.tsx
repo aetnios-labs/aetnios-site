@@ -32,8 +32,8 @@ const TechStackSection = () => {
 
         <div className="relative">
           <div
-            className="flex whitespace-nowrap"
-            style={{ animation: `marquee ${isMobile ? 14 : 30}s linear infinite` }}
+            className="flex animate-marquee whitespace-nowrap"
+            style={isMobile ? { animationDuration: '14s' } : undefined}
           >
             {doubled.map((tech, i) => (
               <span
