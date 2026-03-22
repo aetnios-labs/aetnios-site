@@ -7,12 +7,12 @@ const socials = [
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border py-10" role="contentinfo">
+    <footer className="border-t border-border py-8" role="contentinfo">
       <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="font-mono text-sm text-muted-foreground">
-          &copy; {new Date().getFullYear()} <span className="text-neon-green">Aetnios</span>
+        <p className="text-sm text-muted-foreground font-body">
+          &copy; {new Date().getFullYear()} Aetnios
         </p>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3">
           {socials.map((s) => (
             <a
               key={s.label}
@@ -20,7 +20,7 @@ const Footer = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={s.label}
-              className="text-muted-foreground hover:text-neon-green hover:drop-shadow-[0_0_8px_hsl(142_71%_45%/0.5)] transition-all duration-300"
+              className="p-3 text-muted-foreground hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               <s.icon size={20} />
             </a>

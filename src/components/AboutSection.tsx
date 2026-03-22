@@ -1,151 +1,41 @@
 import { motion } from 'framer-motion';
-import { useEffect, useRef } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
-
-const WireframeCanvas = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = 400;
-    canvas.height = 400;
-    let angle = 0;
-
-    const drawWireframe = () => {
-      ctx.clearRect(0, 0, 400, 400);
-      const cx = 200, cy = 200, r = 130;
-
-      // Generate sphere points with more divisions
-      const latCount = 20;
-      const lonCount = 28;
-      const points: [number, number, number][] = [];
-
-      for (let lat = 0; lat < latCount; lat++) {
-        for (let lon = 0; lon < lonCount; lon++) {
-          const theta = (lat / (latCount - 1)) * Math.PI;
-          const phi = (lon / (lonCount - 1)) * Math.PI * 2 + angle;
-          const x = r * Math.sin(theta) * Math.cos(phi);
-          const y = r * Math.cos(theta);
-          const z = r * Math.sin(theta) * Math.sin(phi);
-          points.push([x, y, z]);
-        }
-      }
-
-      ctx.shadowColor = 'hsl(142 71% 45% / 0.35)';
-      ctx.shadowBlur = 5;
-
-      // Draw latitude lines
-      for (let lat = 0; lat < latCount; lat++) {
-        const depth = Math.abs(lat - latCount / 2) / (latCount / 2);
-        ctx.strokeStyle = `hsl(142 71% 45% / ${0.15 + depth * 0.45})`;
-        ctx.lineWidth = 0.5 + depth * 0.4;
-        ctx.beginPath();
-        for (let lon = 0; lon < lonCount; lon++) {
-          const idx = lat * lonCount + lon;
-          const [x, y] = points[idx];
-          if (lon === 0) ctx.moveTo(cx + x, cy + y);
-          else ctx.lineTo(cx + x, cy + y);
-        }
-        ctx.stroke();
-      }
-
-      // Draw longitude lines
-      for (let lon = 0; lon < lonCount; lon++) {
-        ctx.strokeStyle = 'hsl(142 71% 45% / 0.35)';
-        ctx.lineWidth = 0.5;
-        ctx.beginPath();
-        for (let lat = 0; lat < latCount; lat++) {
-          const idx = lat * lonCount + lon;
-          const [x, y] = points[idx];
-          if (lat === 0) ctx.moveTo(cx + x, cy + y);
-          else ctx.lineTo(cx + x, cy + y);
-        }
-        ctx.stroke();
-      }
-
-      // Draw diagonal cross-hatch lines for extra intricacy
-      ctx.strokeStyle = 'hsl(271 91% 65% / 0.15)';
-      ctx.lineWidth = 0.3;
-      ctx.shadowColor = 'hsl(271 91% 65% / 0.2)';
-      ctx.shadowBlur = 4;
-      for (let i = 0; i < latCount - 1; i += 2) {
-        ctx.beginPath();
-        for (let j = 0; j < lonCount - 1; j++) {
-          const idx1 = i * lonCount + j;
-          const idx2 = (i + 1) * lonCount + ((j + 1) % lonCount);
-          const [x1, y1] = points[idx1];
-          const [x2, y2] = points[idx2];
-          ctx.moveTo(cx + x1, cy + y1);
-          ctx.lineTo(cx + x2, cy + y2);
-        }
-        ctx.stroke();
-      }
-
-      // Accent dots at intersections
-      ctx.shadowColor = 'hsl(142 71% 45% / 0.5)';
-      ctx.shadowBlur = 3;
-      for (let lat = 0; lat < latCount; lat += 3) {
-        for (let lon = 0; lon < lonCount; lon += 4) {
-          const idx = lat * lonCount + lon;
-          const [x, y, z] = points[idx];
-          const brightness = (z + r) / (2 * r);
-          ctx.fillStyle = `hsl(142 71% 45% / ${0.2 + brightness * 0.6})`;
-          ctx.beginPath();
-          ctx.arc(cx + x, cy + y, 1 + brightness * 1.2, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      angle += 0.004;
-      requestAnimationFrame(drawWireframe);
-    };
-
-    const raf = requestAnimationFrame(drawWireframe);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  return <canvas ref={canvasRef} className="w-full max-w-[280px] md:max-w-[400px] h-auto mx-auto" />;
-};
 
 const AboutSection = () => {
   const isMobile = useIsMobile();
-  const ease = [0.25, 0.1, 0.25, 1] as const;
+  const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <section id="about" className="relative py-16 md:py-32">
+    <section id="about" className="relative py-28 md:py-56 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-20">
           <motion.div
-            initial={{ opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? 16 : 0 }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            initial={{ opacity: 0, y: isMobile ? 12 : 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: isMobile ? 0.4 : 0.7, ease }}
+            transition={{ duration: 0.6, ease }}
+            className="lg:col-span-5 lg:sticky lg:top-24 lg:self-start"
           >
-            <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-purple mb-4">About Us</p>
-            <h2 className="font-mono text-3xl md:text-5xl font-bold text-foreground mb-6 leading-tight" style={{ textShadow: '0 0 30px hsl(271 91% 65% / 0.15)' }}>
+            <p className="section-label">About</p>
+            <h2 className="font-mono text-3xl md:text-6xl font-bold text-foreground leading-tight">
               Building what's{' '}
-              <span className="text-neon-green">next</span> — right now.
+              <span className="text-primary">next</span> — right now.
             </h2>
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6 font-body">
-              Aetnios is a software studio built for speed and substance. I work directly with founders, startups, and teams who need senior-level engineering without the overhead of an agency. No layers, no hand-offs — just clean architecture and shipped products.
-            </p>
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-body">
-              Whether you're launching an MVP, scaling infrastructure, or exploring emerging tech like blockchain and AI — I bring the technical depth to get it done right and the pragmatism to get it done fast.
-            </p>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: isMobile ? 0 : 40, y: isMobile ? 16 : 0 }}
-            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            initial={{ opacity: 0, y: isMobile ? 12 : 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: isMobile ? 0.4 : 0.7, delay: isMobile ? 0.1 : 0.2, ease }}
-            className="flex justify-center"
+            transition={{ duration: 0.6, delay: 0.1, ease }}
+            className="lg:col-span-6 lg:col-start-7 space-y-8"
           >
-            <WireframeCanvas />
+            <p className="text-muted-foreground text-base md:text-xl leading-relaxed font-body">
+              Aetnios is a software studio built for speed and substance. I work directly with founders, startups, and teams who need senior-level engineering without the overhead of an agency. No layers, no hand-offs — just clean architecture and shipped products.
+            </p>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-body font-light">
+              Whether you're launching an MVP, scaling infrastructure, or exploring emerging tech like blockchain and AI — I bring the technical depth to get it done right and the pragmatism to get it done fast.
+            </p>
           </motion.div>
         </div>
       </div>

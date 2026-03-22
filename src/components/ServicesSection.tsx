@@ -1,100 +1,89 @@
 import { motion } from 'framer-motion';
-import { Code2, Blocks, Brain, BarChart3, Workflow } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const services = [
   {
-    icon: Code2,
     title: 'Full-Stack Engineering',
-    description: 'End-to-end web and mobile applications built with modern architectures, scalable infrastructure, and clean code.',
+    detail: 'Web & mobile, concept to production',
   },
   {
-    icon: Blocks,
     title: 'Blockchain & DeFi',
-    description: 'Smart contracts, DeFi protocols, tokenomics design, and Web3 integration — from concept to mainnet.',
+    detail: 'Smart contracts to mainnet',
   },
   {
-    icon: Brain,
     title: 'AI & Machine Learning',
-    description: 'Custom ML models, NLP pipelines, computer vision, and AI-powered automation tailored to your domain.',
+    detail: 'Custom models, pipelines, automation',
   },
   {
-    icon: BarChart3,
     title: 'Data Analytics',
-    description: 'Data pipelines, real-time dashboards, predictive analytics, and business intelligence at scale.',
+    detail: 'Pipelines, dashboards, real-time BI',
   },
   {
-    icon: Workflow,
-    title: 'Process Management',
-    description: 'Workflow optimization, DevOps pipelines, agile transformation, and operational efficiency consulting.',
+    title: 'DevOps & Process',
+    detail: 'CI/CD, infrastructure, workflow optimization',
   },
+];
+
+const techs = [
+  'React', 'TypeScript', 'Node.js', 'Python', 'Solidity', 'Rust',
+  'AWS', 'GCP', 'Docker', 'Kubernetes', 'PostgreSQL', 'MongoDB',
+  'TensorFlow', 'PyTorch', 'GraphQL', 'Redis', 'Terraform', 'Go',
 ];
 
 const ServicesSection = () => {
   const isMobile = useIsMobile();
-
-  const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: isMobile ? 0.06 : 0.12 } },
-  };
-
-  const cardVariants = isMobile
-    ? {
-        hidden: { opacity: 0, y: 16 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] } },
-      }
-    : {
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } },
-      };
+  const ease = [0.16, 1, 0.3, 1] as const;
 
   return (
-    <section id="services" className="relative py-16 md:py-32 overflow-hidden">
-      {/* Animated grid background */}
-      <div
-        className="absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: `
-            linear-gradient(hsl(142 71% 45% / 0.3) 1px, transparent 1px),
-            linear-gradient(90deg, hsl(271 91% 65% / 0.3) 1px, transparent 1px)
-          `,
-          backgroundSize: '60px 60px',
-          animation: 'pulse-grid 4s ease-in-out infinite',
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+    <section id="services" className="relative pt-24 md:pt-44 pb-24 md:pb-44">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: isMobile ? 12 : 30 }}
+          initial={{ opacity: 0, y: isMobile ? 12 : 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: isMobile ? '-40px' : '-100px' }}
-          transition={{ duration: isMobile ? 0.4 : 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-          className="text-center mb-16"
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease }}
+          className="mb-16 md:mb-24"
         >
-          <p className="font-mono text-sm tracking-[0.3em] uppercase text-neon-green mb-4">What I Do</p>
-          <h2 className="font-mono text-3xl md:text-6xl font-bold text-foreground" style={{ textShadow: '0 0 30px hsl(142 71% 45% / 0.15)' }}>
+          <h2 className="font-mono text-3xl md:text-6xl font-bold text-foreground">
             Services
           </h2>
         </motion.div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: isMobile ? '-20px' : '-50px' }}
-          className="flex flex-wrap justify-center gap-6"
-        >
-          {services.map((service) => (
+        <div className="mb-16 md:mb-20">
+          {services.map((service, idx) => (
             <motion.div
               key={service.title}
-              variants={cardVariants}
-              className="spinning-gradient-border glass-card glass-card-hover rounded-xl p-6 md:p-8 group cursor-default transition-all duration-300 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+              initial={{ opacity: 0, x: isMobile ? 0 : -20, y: isMobile ? 10 : 0 }}
+              whileInView={{ opacity: 1, x: 0, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{ duration: 0.5, delay: idx * 0.06, ease }}
+              className="group border-t border-border"
             >
-              <service.icon className="w-10 h-10 text-neon-green mb-5 group-hover:drop-shadow-[0_0_12px_hsl(142_71%_45%/0.6)] transition-all duration-300" />
-              <h3 className="font-mono text-xl font-bold text-foreground mb-3">{service.title}</h3>
-              <p className="text-muted-foreground text-base leading-relaxed font-body">{service.description}</p>
+              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 md:gap-12 cursor-default py-6 md:py-8 border-l-[3px] border-l-transparent group-hover:border-l-primary pl-0 group-hover:pl-5 transition-all duration-200">
+                <h3 className="font-mono text-lg md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-200">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground text-sm md:text-base font-body font-light shrink-0">
+                  {service.detail}
+                </p>
+              </div>
             </motion.div>
           ))}
+          <div className="border-t border-border" />
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease }}
+        >
+          <p className="text-xs font-heading font-medium uppercase tracking-[0.2em] text-muted-foreground mb-5">
+            Technologies
+          </p>
+          <p className="text-sm md:text-base font-body text-muted-foreground font-light leading-loose">
+            {techs.join(' · ')}
+          </p>
         </motion.div>
       </div>
     </section>
