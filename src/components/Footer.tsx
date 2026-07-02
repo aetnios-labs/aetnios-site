@@ -1,31 +1,35 @@
-import { Github, Linkedin } from 'lucide-react';
-
-const socials = [
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/ian-fru/', label: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com/kingl0w', label: 'GitHub' },
-];
+import { CONTENT } from '@/content';
+import { LogoMark } from '@/components/brand';
 
 const Footer = () => {
+  const C = CONTENT;
   return (
-    <footer className="border-t border-border py-8" role="contentinfo">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-muted-foreground font-body">
-          &copy; {new Date().getFullYear()} Aetnios
-        </p>
-        <div className="flex items-center gap-3">
-          {socials.map((s) => (
-            <a
-              key={s.label}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={s.label}
-              className="p-3 text-muted-foreground hover:text-foreground transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-            >
-              <s.icon size={20} />
-            </a>
-          ))}
+    <footer className="footer" role="contentinfo">
+      <div className="shell footer-grid">
+        <div className="footer-brand">
+          <a className="brand" href="#top">
+            <LogoMark size={36} />
+            <span className="brand-word">{C.brand}<span className="brand-suf">{C.brandSuffix}</span></span>
+          </a>
+          <p className="footer-blurb">{C.footer.blurb}</p>
         </div>
+        {C.footer.cols.map((col) => (
+          <div className="footer-col" key={col.head}>
+            <h4>{col.head}</h4>
+            <ul>{col.links.map((l) => <li key={l}><a href="#capabilities">{l}</a></li>)}</ul>
+          </div>
+        ))}
+        <div className="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href={`mailto:${C.contact.email}`}>{C.contact.email}</a></li>
+            <li><a href="#contact">Start a project</a></li>
+          </ul>
+        </div>
+      </div>
+      <div className="shell footer-base">
+        <span>{C.footer.copyright}</span>
+        <span className="footer-loc">Remote · United States</span>
       </div>
     </footer>
   );
