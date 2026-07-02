@@ -7,14 +7,16 @@ const ContactSection = () => {
   const C = CONTENT.contact;
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [errMsg, setErrMsg] = useState('');
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (!WEB3FORMS_KEY) { setErrMsg('Form not configured (missing VITE_WEB3FORMS_KEY).'); setStatus('error'); return; }
     setStatus('sending');
     try {
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
           subject: `New inquiry from ${form.name}${form.company ? ` at ${form.company}` : ''}`,
@@ -24,12 +26,15 @@ const ContactSection = () => {
           message: form.message,
         }),
       });
-      if (!res.ok) throw new Error('Submit failed');
+      // Web3Forms replies HTTP 200 even on rejection — the JSON `success` flag
+      // is the real signal, so res.ok alone isn't enough.
+      const data = await res.json().catch(() => ({ success: false, message: `HTTP ${res.status}` }));
+      if (!data.success) throw new Error(data.message || 'Submission failed');
       setStatus('sent');
       setForm({ name: '', email: '', company: '', message: '' });
-    } catch {
+    } catch (err) {
+      setErrMsg(err instanceof Error ? err.message : 'Something went wrong.');
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
@@ -64,8 +69,13 @@ const ContactSection = () => {
               <textarea className="field" rows={4} placeholder="What are you trying to build?" required maxLength={2000}
                 value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} />
               <button className="btn btn-primary btn-lg form-submit" type="submit" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Sending…' : status === 'error' ? "Couldn't send — try again" : 'Send message'}
+                {status === 'sending' ? 'Sending…' : 'Send message'}
               </button>
+              {status === 'error' && (
+                <p className="contact-note" style={{ margin: 0, color: 'var(--accent)' }}>
+                  <span className="dot" />Couldn't send{errMsg ? ` — ${errMsg}` : ''}. Try again or email {C.email}.
+                </p>
+              )}
             </form>
           )}
         </div>
