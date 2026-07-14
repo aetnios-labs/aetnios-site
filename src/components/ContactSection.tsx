@@ -53,7 +53,7 @@ const ContactSection = () => {
         <div className="contact-formwrap" data-reveal style={{ '--d': '120ms' } as CSSProperties}>
           {status === 'sent' ? (
             <div className="form-sent">
-              <h3>Thanks — message received.</h3>
+              <h3>Thanks, message received.</h3>
               <p>We'll get back to you within two business days.</p>
             </div>
           ) : (
@@ -73,7 +73,7 @@ const ContactSection = () => {
               </button>
               {status === 'error' && (
                 <p className="contact-note" style={{ margin: 0, color: 'var(--accent)' }}>
-                  <span className="dot" />Couldn't send{errMsg ? ` — ${errMsg}` : ''}. Try again or email {C.email}.
+                  <span className="dot" />Couldn't send{errMsg ? ` (${errMsg})` : ''}. Try again or email {C.email}.
                 </p>
               )}
             </form>

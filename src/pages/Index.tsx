@@ -6,7 +6,7 @@ import ApproachSection from '@/components/ApproachSection';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
-import { ROOT_STYLE, HERO_COLORS, MOTION } from '@/lib/theme';
+import { ROOT_STYLE } from '@/lib/theme';
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);
@@ -60,30 +60,8 @@ const Index = () => {
     };
   }, []);
 
-  // Live "status light" pulse on indicator dots — rAF driven, intermittent + staggered.
-  useEffect(() => {
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-    const dots = Array.from(document.querySelectorAll<HTMLElement>('.hero-trust .dot, .contact-note .dot'));
-    const clear = () => dots.forEach((d) => { d.style.boxShadow = ''; d.style.transform = ''; });
-    if (!MOTION || reduce || !dots.length) { clear(); return; }
-    const m = (getComputedStyle(dots[0]).backgroundColor.match(/\d+/g) || [179, 32, 36]).map(Number);
-    const cycle = 4600;
-    let raf = 0;
-    const loop = (now: number) => {
-      for (let i = 0; i < dots.length; i++) {
-        const phase = ((now + i * 1500) % cycle) / cycle;
-        const k = Math.pow(Math.max(0, Math.sin(phase * Math.PI * 2)), 6); // brief peak once per cycle
-        dots[i].style.boxShadow = `0 0 0 ${(3 + k * 7).toFixed(1)}px rgba(${m[0]},${m[1]},${m[2]},${(0.3 * k).toFixed(3)})`;
-        dots[i].style.transform = `scale(${(1 + k * 0.22).toFixed(3)})`;
-      }
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-    return () => { cancelAnimationFrame(raf); clear(); };
-  }, []);
-
   return (
-    <div className="root" data-mode="dark" data-motion={MOTION ? 'true' : 'false'} style={ROOT_STYLE}>
+    <div className="root" style={ROOT_STYLE}>
       <a href="#capabilities" className="btn btn-primary"
         style={{ position: 'absolute', left: 16, top: 16, zIndex: 60, transform: 'translateY(-200%)' }}
         onFocus={(e) => { e.currentTarget.style.transform = 'none'; }}
@@ -93,8 +71,6 @@ const Index = () => {
       <Navbar onCta={() => scrollToId('contact')} />
       <main>
         <HeroSection
-          heroColors={HERO_COLORS}
-          motion={MOTION}
           onPrimary={() => scrollToId('contact')}
           onSecondary={() => scrollToId('capabilities')}
         />

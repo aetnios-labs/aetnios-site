@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CONTENT } from '@/content';
-import { LogoMark } from '@/components/brand';
+import { LogoMark, BrandWord } from '@/components/brand';
 
 const Navbar = ({ onCta }: { onCta: () => void }) => {
   const C = CONTENT;
@@ -21,8 +21,8 @@ const Navbar = ({ onCta }: { onCta: () => void }) => {
     <nav className={'nav' + (open ? ' is-open' : '')}>
       <div className="shell nav-inner">
         <a className="brand" href="#top" onClick={() => setOpen(false)}>
-          <LogoMark size={42} />
-          <span className="brand-word">{C.brand}<span className="brand-suf">{C.brandSuffix}</span></span>
+          <LogoMark size={30} />
+          <BrandWord />
         </a>
         <div className="nav-links">
           {C.nav.map((l) => <a key={l.href} href={l.href}>{l.label}</a>)}

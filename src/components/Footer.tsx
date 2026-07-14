@@ -1,5 +1,5 @@
 import { CONTENT } from '@/content';
-import { LogoMark } from '@/components/brand';
+import { LogoMark, BrandWord } from '@/components/brand';
 
 const Footer = () => {
   const C = CONTENT;
@@ -8,8 +8,8 @@ const Footer = () => {
       <div className="shell footer-grid">
         <div className="footer-brand">
           <a className="brand" href="#top">
-            <LogoMark size={36} />
-            <span className="brand-word">{C.brand}<span className="brand-suf">{C.brandSuffix}</span></span>
+            <LogoMark size={30} />
+            <BrandWord />
           </a>
           <p className="footer-blurb">{C.footer.blurb}</p>
         </div>

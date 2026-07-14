@@ -12,21 +12,21 @@ export const CONTENT = {
   ],
   hero: {
     eyebrow: 'Software · Data · Applied AI',
-    title: ['Engineering intelligent software', 'for mission-critical work.'],
-    sub: 'Aetnios Labs is a software and data engineering studio. We ship full-stack platforms, design semantic knowledge graphs, and build the AI systems that turn complex information into dependable tools.',
+    title: ['Engineering intelligent software', 'for mission critical work'],
+    sub: 'A software and data engineering studio. Full stack platforms, semantic knowledge graphs, and AI systems that turn complex information into dependable tools.',
     primary: 'Start a conversation',
     secondary: 'View capabilities',
-    trust: ['Full-stack delivery', 'Secure by design', 'Prototype to production'],
+    trust: ['Full stack delivery', 'Secure by design', 'Prototype to production'],
   },
   capabilities: {
     eyebrow: 'Capabilities',
     title: 'What we build',
-    sub: 'Senior engineering across the stack — from interface to ontology to model.',
+    sub: 'Senior engineering across the stack, from interface to ontology to model.',
     items: [
       {
         k: '01', icon: 'stack' as IconName,
-        title: 'Full-Stack Engineering',
-        body: 'End-to-end web and application builds, interface modernization, and platform rebuilds — delivered production-ready and accessible.',
+        title: 'Full Stack Engineering',
+        body: 'Complete web and application builds, interface modernization, and platform rebuilds, all delivered production ready and accessible.',
         tags: ['Web platforms', 'UI modernization', 'APIs'],
       },
       {
@@ -38,7 +38,7 @@ export const CONTENT = {
       {
         k: '03', icon: 'ai' as IconName,
         title: 'Applied AI & Agents',
-        body: 'RAG pipelines, agent orchestration, and AI automation loops that put your own data to work — grounded, observable, and auditable.',
+        body: 'RAG pipelines, agent orchestration, and AI automation loops that put your own data to work: grounded, observable, and auditable.',
         tags: ['RAG pipelines', 'Agent orchestration', 'Automation'],
       },
       {
@@ -63,13 +63,13 @@ export const CONTENT = {
     eyebrow: 'About',
     title: 'A boutique studio for dependable systems',
     body: [
-      'Aetnios Labs works at the intersection of software, data, and applied AI. We partner with teams that need systems they can trust — full-stack platforms, modern interfaces, semantic knowledge graphs, and grounded AI tooling.',
+      'Aetnios Labs works at the intersection of software, data, and applied AI. We partner with teams that need systems they can trust: full stack platforms, modern interfaces, semantic knowledge graphs, and grounded AI tooling.',
       'We work in small, senior teams, communicate plainly, and build for the long run. We are open to public-sector and enterprise engagements.',
     ],
     values: [
-      { title: 'Senior-only delivery', body: 'The people who scope your work are the people who build it.' },
+      { title: 'Senior engineers only', body: 'The people who scope your work are the people who build it.' },
       { title: 'Secure & auditable', body: 'Reliability, traceability, and documentation are part of the build.' },
-      { title: 'Grounded AI', body: 'No black boxes — AI systems you can inspect, evaluate, and trust.' },
+      { title: 'Grounded AI', body: 'No black boxes. AI systems you can inspect, evaluate, and trust.' },
     ],
   },
   contact: {
@@ -77,12 +77,12 @@ export const CONTENT = {
     title: "Let's talk about your project",
     sub: 'Tell us what you are trying to build. We respond within two business days.',
     email: 'contact@aetnios.com',
-    note: 'Open to public-sector & enterprise engagements.',
+    note: 'Open to public sector and enterprise engagements.',
   },
   footer: {
     blurb: 'Building dependable software, data, and AI systems for forward-thinking teams.',
     cols: [
-      { head: 'Capabilities', links: ['Full-Stack Engineering', 'Data & Knowledge Graphs', 'Applied AI & Agents', 'Platform Modernization'] },
+      { head: 'Capabilities', links: ['Full Stack Engineering', 'Data & Knowledge Graphs', 'Applied AI & Agents', 'Platform Modernization'] },
       { head: 'Company', links: ['About', 'Approach', 'Contact'] },
     ],
     copyright: '© 2026 Aetnios Labs. All rights reserved.',

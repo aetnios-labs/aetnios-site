@@ -1,0 +1,26 @@
+# Aetnios Labs — marketing site
+
+Vite + React + TypeScript. Site theme lives in CSS vars (`src/lib/theme.ts` applied on `.root`, styles in `src/index.css`); all copy in `src/content.ts`.
+
+## Design Context
+
+### Users
+Technical decision-makers at public-sector agencies and enterprises evaluating a boutique software/data/AI engineering studio. They arrive skeptical, scanning for credibility and seniority; the job to be done is "decide this studio is dependable enough to contact." Mostly desktop, but mobile must be first-class.
+
+### Brand Personality
+Bold, sharp, modern — with the quiet confidence of a senior-only studio. The interface should evoke trust and precision, never hype. Plain-spoken copy; no marketing froth.
+
+### Aesthetic Direction
+- **Light theme** on warm paper (no pure white, no pure black — warm-tinted neutrals throughout).
+- **Softened brand red** (`#b32024` family, from the logo mark) as the *single* accent, used sparingly; warmer ink and cream/tan mid-tones carry the page. Reduce harsh red/black/white contrast.
+- **Typography**: Roboto for display and body (explicit owner preference), IBM Plex Mono for small labels/numerals only.
+- **Sharp geometry**: hard edges, minimal border-radius, hairline rules, hard offset-square shadows on filled buttons (no blurred drop shadows, no glassmorphism).
+- **Editorial layout**: numbered rows and ruled lists over icon-card grids; asymmetric two-column rhythms; generous section spacing.
+- **Anti-references**: generic AI landing pages — dark navy with glowing accents, purple/blue gradients, identical icon cards, pill buttons with hover-lift.
+
+### Design Principles
+1. One accent color, earned — red marks only what matters (CTAs, numerals, key emphasis).
+2. Warm everything — every neutral is tinted toward the brand's warm hue; never #fff/#000.
+3. Sharp, not soft — hard offset shadows and hairline rules instead of blur and glow.
+4. Editorial over templated — rules, numerals, and asymmetry instead of card grids.
+5. Motion is subtle and optional — staggered reveals only, `prefers-reduced-motion` always respected.
