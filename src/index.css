@@ -248,6 +248,12 @@ textarea.field { resize: vertical; min-height: 96px; }
 
 /* ---- responsive ---- */
 @media (max-width: 900px) {
+  /* text spans the full width here, so wash the whole dot field down to a whisper */
+  .hero-fade {
+    background: color-mix(in srgb, var(--bg) 62%, transparent);
+  }
+}
+@media (max-width: 900px) {
   .contact-grid, .about-grid { grid-template-columns: 1fr; }
   .cap-row { grid-template-columns: 56px 1fr; gap: 12px 20px; padding: 32px 0 36px; }
   .cap-row .cap-body { grid-column: 2; }

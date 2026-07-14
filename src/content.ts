@@ -64,7 +64,7 @@ export const CONTENT = {
     title: 'A boutique studio for dependable systems',
     body: [
       'Aetnios Labs works at the intersection of software, data, and applied AI. We partner with teams that need systems they can trust: full stack platforms, modern interfaces, semantic knowledge graphs, and grounded AI tooling.',
-      'We work in small, senior teams, communicate plainly, and build for the long run. We are open to public-sector and enterprise engagements.',
+      'We work in small, senior teams, communicate plainly, and build for the long run. We are open to public sector and enterprise engagements.',
     ],
     values: [
       { title: 'Senior engineers only', body: 'The people who scope your work are the people who build it.' },
