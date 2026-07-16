@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ServicesSection from '@/components/ServicesSection';
+import WorkSection from '@/components/WorkSection';
 import ApproachSection from '@/components/ApproachSection';
 import AboutSection from '@/components/AboutSection';
 import ContactSection from '@/components/ContactSection';
@@ -75,6 +76,7 @@ const Index = () => {
           onSecondary={() => scrollToId('capabilities')}
         />
         <ServicesSection />
+        <WorkSection />
         <ApproachSection />
         <AboutSection />
         <ContactSection />

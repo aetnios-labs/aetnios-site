@@ -177,6 +177,17 @@ html { scroll-behavior: smooth; }
 .cap-tags li + li::before { content: '·'; margin: 0 10px; color: var(--line-strong); }
 .cap-body { font-size: 16px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
 
+/* ---- selected work ---- */
+.work-links { display: flex; gap: 26px; margin: 18px 0 0; }
+.work-links a {
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--line-strong); padding-bottom: 2px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.work-links a::after { content: ' \2197'; }
+.work-links a:hover { color: var(--accent); border-color: var(--accent); }
+
 /* ---- approach ---- */
 .step-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--ink); }
 .step { padding: 34px 28px 12px 0; border-right: 1px solid var(--line-strong); }
