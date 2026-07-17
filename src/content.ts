@@ -1,4 +1,4 @@
-// Site content — ported from the Claude Design "Aetnios Labs" theme.jsx CONTENT.
+// Site content - ported from the Claude Design "Aetnios Labs" theme.jsx CONTENT.
 
 export type IconName = 'stack' | 'graph' | 'ai' | 'shield';
 
@@ -12,12 +12,10 @@ export const CONTENT = {
     { label: 'About', href: '#about' },
   ],
   hero: {
-    eyebrow: 'Software · Data · Applied AI',
     title: ['Engineering intelligent software', 'for mission critical work'],
     sub: 'A software and data engineering studio. Full stack platforms, semantic knowledge graphs, and AI systems that turn complex information into dependable tools.',
     primary: 'Start a conversation',
     secondary: 'View capabilities',
-    trust: ['Full stack delivery', 'Secure by design', 'Prototype to production'],
   },
   capabilities: {
     eyebrow: 'Capabilities',

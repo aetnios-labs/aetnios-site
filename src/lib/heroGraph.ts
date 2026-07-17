@@ -1,7 +1,7 @@
 // Hero background animations, switchable for comparison via ?anim=
-//   graph   — knowledge graph that assembles itself, then breathes
-//   contour — slow drifting topographic contour lines
-//   sweep   — ordered dot grid with a passing highlight band
+//   graph   - knowledge graph that assembles itself, then breathes
+//   contour - slow drifting topographic contour lines
+//   sweep   - ordered dot grid with a passing highlight band
 // All honor prefers-reduced-motion by rendering a static frame.
 
 export type HeroAnim = 'graph' | 'contour' | 'sweep';

@@ -33,7 +33,7 @@
 }
 
 /* ==========================================================================
-   Aetnios Labs — editorial design system.
+   Aetnios Labs - editorial design system.
    Warm paper, hairline rules, Fraunces display over Instrument Sans body,
    brand red as the single accent. Theme vars applied on .root in Index.tsx.
    ========================================================================== */
@@ -55,7 +55,6 @@ html { scroll-behavior: smooth; }
   font-size: 12px; letter-spacing: .22em; text-transform: uppercase;
   color: var(--accent); margin: 0 0 20px; font-weight: 500;
 }
-.eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); flex: none; }
 
 /* ---- buttons ---- */
 .btn {
@@ -141,12 +140,7 @@ html { scroll-behavior: smooth; }
 }
 .hero-period { color: var(--accent); }
 .hero-sub { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.6; color: var(--ink-soft); max-width: 54ch; margin: 0 0 40px; }
-.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
-.hero-trust {
-  list-style: none; display: flex; flex-wrap: wrap; gap: 12px 32px; padding: 20px 0 0; margin: 0;
-  border-top: 1px solid var(--line-strong);
-}
-.hero-trust li { display: flex; align-items: center; gap: 10px; font-size: 13px; letter-spacing: .04em; color: var(--ink-soft); font-family: var(--font-mono); }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 .dot { width: 6px; height: 6px; background: var(--accent); display: inline-block; flex: none; }
 
 /* ---- sections ---- */
@@ -295,7 +289,7 @@ textarea.field { resize: vertical; min-height: 96px; }
 
 @media (max-width: 560px) {
   .shell { padding: 0 20px; }
-  /* .shell's shorthand above would zero the hero's top/bottom padding — restate all sides */
+  /* .shell's shorthand above would zero the hero's top/bottom padding - restate all sides */
   .hero-inner { padding: 72px 20px 60px; }
   .step-grid, .footer-grid, .form-row { grid-template-columns: 1fr; }
   .footer-base { flex-direction: column; gap: 10px; align-items: flex-start; }

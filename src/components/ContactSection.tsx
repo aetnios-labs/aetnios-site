@@ -26,7 +26,7 @@ const ContactSection = () => {
           message: form.message,
         }),
       });
-      // Web3Forms replies HTTP 200 even on rejection — the JSON `success` flag
+      // Web3Forms replies HTTP 200 even on rejection - the JSON `success` flag
       // is the real signal, so res.ok alone isn't enough.
       const data = await res.json().catch(() => ({ success: false, message: `HTTP ${res.status}` }));
       if (!data.success) throw new Error(data.message || 'Submission failed');

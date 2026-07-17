@@ -1,4 +1,4 @@
-// Aetnios brand — interlock symbol plus red-O wordmark.
+// Aetnios brand - interlock symbol plus red-O wordmark.
 // The interlock's leading square uses currentColor so it adapts to light and
 // dark surfaces; the woven link stays brand red.
 export function LogoMark({ size = 30 }: { size?: number }) {

@@ -15,7 +15,7 @@ function scrollToId(id: string) {
 }
 
 const Index = () => {
-  // Scroll-reveal — manual rAF tween (performance.now), not the CSS animation
+  // Scroll-reveal - manual rAF tween (performance.now), not the CSS animation
   // timeline (which can be frozen in some embed/preview contexts). Safety net
   // guarantees nothing stays hidden.
   useEffect(() => {

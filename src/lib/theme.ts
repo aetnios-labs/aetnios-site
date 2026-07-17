@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 
-// Editorial light theme — warm paper, hairline rules, brand red kept from the
+// Editorial light theme - warm paper, hairline rules, brand red kept from the
 // logo mark. Neutrals are tinted toward the brand's warm hue on purpose.
 export const ACCENT = '#b03136';
 
